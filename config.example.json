@@ -1,0 +1,32 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8317
+  },
+  "access": {
+    "api_keys": ["your-api-key-1"]
+  },
+  "routing": {
+    "strategy": "round-robin",
+    "retry": 1,
+    "cooldown_seconds": 60
+  },
+  "upstreams": [
+    {
+      "name": "openai",
+      "base_url": "https://api.openai.com/v1",
+      "api_key": "sk-your-key-here",
+      "models": ["*"],
+      "timeout": 120
+    },
+    {
+      "name": "opencode-go",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key": "sk-your-opencode-key-here",
+      "models": ["kimi-k2.7-code", "deepseek-*", "glm-*"],
+      "timeout": 120,
+      "session_id": "my-conversation-id",
+      "opencode": true
+    }
+  ]
+}
